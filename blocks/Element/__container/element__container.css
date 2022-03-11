@@ -1,15 +1,18 @@
 .element__container {
   width: 100%;
   max-width: 282px;
-  padding-right: 17px;
-  background-color: white;
+  margin-right: 17px;
   list-style: none;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  height: 361px;
 }
 
 .element__container:last-child {
-  padding-right: 0;
+  margin-right: 0;
 }
 
 .element__container:nth-child(3) {
-  padding-right: 0;
+  margin-right: 0;
   }
