@@ -19,3 +19,5 @@
 @import url(../blocks/Element/__like/element__like.css);
 @import url(../blocks/Element/__text/element__text.css);
 @import url(../blocks/Element/__flex-row/element__flex-row.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__author/footer__author.css);
