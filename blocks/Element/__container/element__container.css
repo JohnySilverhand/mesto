@@ -5,3 +5,11 @@
   background-color: white;
   list-style: none;
 }
+
+.element__container:last-child {
+  padding-right: 0;
+}
+
+.element__container:nth-child(4) {
+  padding-right: 0;
+  }
