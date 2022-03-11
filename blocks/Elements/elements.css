@@ -4,3 +4,10 @@
   max-width: 880px;
   padding-top: 51px;
 }
+
+@media (min-width: 320px) and (max-width: 1023px){
+  .elements {
+    width: 89%;
+    padding-top: 16px;
+  }
+}

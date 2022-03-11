@@ -8,3 +8,10 @@
   background-color: black;
   align-self: center;
 }
+
+@media (min-width: 320px) and (max-width: 1023px){
+  .profile__add-button {
+    margin-top: 36px;
+    width: 100%;
+  }
+}

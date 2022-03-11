@@ -1,6 +1,7 @@
 .element__container {
   width: 100%;
   max-width: 282px;
+  margin: 0;
   margin-right: 17px;
   list-style: none;
   margin-top: 20px;
@@ -16,3 +17,22 @@
 .element__container:nth-child(3) {
   margin-right: 0;
   }
+
+@media (min-width: 320px) and (max-width: 1023px){
+  .element__container {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 634px) and (max-width: 1023px) {
+  .element__container {
+    margin-right: 17px;
+  }
+  .element__container:nth-child(3) {
+    margin-right: 17px;
+  }
+
+  .element__container:last-child {
+    margin-right: 17px;
+  }
+}

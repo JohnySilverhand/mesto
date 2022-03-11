@@ -6,3 +6,11 @@
   padding-left: 18px;
   align-self: center;
 }
+
+@media (min-width: 320px) and (max-width: 1023px){
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+    padding-left: 10px;
+  }
+}

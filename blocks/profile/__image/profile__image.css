@@ -3,3 +3,10 @@
   width: 26.5%;
   max-width: 120px;
 }
+
+@media (min-width: 320px) and (max-width: 1023px){
+  .profile__image {
+    width: 43.5%;
+    align-self: center;
+  }
+}

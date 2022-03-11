@@ -5,3 +5,9 @@
   padding-top: 67px;
   padding-bottom: 60px;
 }
+
+@media (min-width: 320px) and (max-width: 1023px){
+  .footer {
+    width: 88%;
+  }
+}
