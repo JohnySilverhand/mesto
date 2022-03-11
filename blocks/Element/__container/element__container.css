@@ -1,0 +1,7 @@
+.element__container {
+  width: 100%;
+  max-width: 282px;
+  padding-right: 17px;
+  background-color: white;
+  list-style: none;
+}
