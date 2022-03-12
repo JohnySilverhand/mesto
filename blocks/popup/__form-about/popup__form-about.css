@@ -1,0 +1,9 @@
+.popup__form-about {
+  width: 100%;
+  max-width: 422px;
+  border: 0;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 13px;
+  padding-top: 30px;
+  box-sizing: border-box;
+  }
