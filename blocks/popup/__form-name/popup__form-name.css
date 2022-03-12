@@ -6,3 +6,7 @@
   padding-bottom: 13px;
   box-sizing: border-box;
 }
+
+.popup__form-name:focus {
+  outline: none;
+  }

@@ -6,4 +6,8 @@
   padding-bottom: 13px;
   padding-top: 30px;
   box-sizing: border-box;
-  }
+}
+
+.popup__form-about:focus {
+  outline: none;
+}
