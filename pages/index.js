@@ -22,15 +22,22 @@ let inputAbout = popupElement.querySelector('.popup__form-about');
 let formElement = popupElement.querySelector('.popup__form');
 let SubmitButton = popupElement.querySelector('.popup__form-submit');
 
+inputName.setAttribute('value', profileHeader.textContent);
+inputAbout.setAttribute('value', profileText.textContent);
 
-editButton.addEventListener('click', function(){
-    inputName.setAttribute('value', profileHeaderText);
-    inputAbout.setAttribute('value', profileTextAbout);
-})
-
-
-function formSubmitHandler (evt) {
+function formSubmitHandler(evt) {
     evt.preventDefault();
+
+   inputName.getAttribute('value');
+   inputAbout.getAttribute('value');
+   profileHeader = sectionProfile.querySelector('.profile__header');
+   profileText = sectionProfile.querySelector('.profile__text');
+   profileHeader.textContent = inputName.value;
+   profileText.textContent = inputAbout.value;
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
+
+SubmitButton.addEventListener('click', function(){
+    popupElement.classList.remove('popup_opened');
+})
