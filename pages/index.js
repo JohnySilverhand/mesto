@@ -1,43 +1,39 @@
 let popupElement = document.querySelector('.popup');
-let sectionProfile = document.querySelector('.profile');
-let editButton = sectionProfile.querySelector('.profile__edit');
-let closeButton = popupElement.querySelector('.popup__close-button');
-
-
-
-editButton.addEventListener('click', function(){
-    popupElement.classList.add('popup_opened');
-})
-
-closeButton.addEventListener('click', function(){
-    popupElement.classList.remove('popup_opened');
-})
-
-let profileHeader = sectionProfile.querySelector('.profile__header');
+let editButton = document.querySelector('.profile__edit');
+let closeButton = document.querySelector('.popup__close-button');
+let profileHeader = document.querySelector('.profile__header');
 let profileHeaderText = profileHeader.textContent;
-let profileText = sectionProfile.querySelector('.profile__text');
+let profileText = document.querySelector('.profile__text');
 let profileTextAbout = profileText.textContent;
-let inputName = popupElement.querySelector('.popup__form-name');
-let inputAbout = popupElement.querySelector('.popup__form-about');
-let formElement = popupElement.querySelector('.popup__form');
-let SubmitButton = popupElement.querySelector('.popup__form-submit');
+let formElement = document.querySelector('.popup__form');
+let inputName = formElement.querySelector('.popup__form-name');
+let inputAbout = formElement.querySelector('.popup__form-about');
+let SubmitButton = formElement.querySelector('.popup__form-submit');
 
-inputName.setAttribute('value', profileHeader.textContent);
-inputAbout.setAttribute('value', profileText.textContent);
+
+function openForm (){
+    popupElement.classList.add('popup_opened');
+    inputName = document.querySelector('.popup__form-name');
+    inputAbout = document.querySelector('.popup__form-about');
+    inputName.value = profileHeader.textContent;
+    inputAbout.value = profileText.textContent;
+}
+editButton.addEventListener('click', openForm, );
+
+
+function closeForm (){
+    popupElement.classList.remove('popup_opened');
+}
+closeButton.addEventListener('click', closeForm);
+
 
 function formSubmitHandler(evt) {
-    evt.preventDefault();
-
-   inputName.getAttribute('value');
-   inputAbout.getAttribute('value');
-   profileHeader = sectionProfile.querySelector('.profile__header');
-   profileText = sectionProfile.querySelector('.profile__text');
+   evt.preventDefault();
+   inputName.value;
+   inputAbout.value;
    profileHeader.textContent = inputName.value;
    profileText.textContent = inputAbout.value;
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
 
-SubmitButton.addEventListener('click', function(){
-    popupElement.classList.remove('popup_opened');
-})
