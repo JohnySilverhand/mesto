@@ -6,6 +6,7 @@
   min-height: 50px;
   margin-top: 30px;
   transition: opacity .5s linear;
+  border-radius: 2px;
 }
 
 .popup__form-submit:hover {

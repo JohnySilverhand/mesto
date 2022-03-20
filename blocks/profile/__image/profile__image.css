@@ -2,11 +2,11 @@
   border-radius: 50%;
   max-width: 120px;
   width: 100%;
+  min-height: 120px;
 }
 
 @media (min-width: 320px) and (max-width: 1023px){
   .profile__image {
-    width: 43.5%;
     align-self: center;
   }
 }
