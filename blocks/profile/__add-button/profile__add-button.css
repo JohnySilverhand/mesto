@@ -9,6 +9,9 @@
   align-self: center;
   transition: opacity .5s linear;
   margin-left: 244px;
+  background-image: url(../../../images/Vector.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .profile__add-button:hover {
