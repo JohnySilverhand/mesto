@@ -11,5 +11,6 @@
   .profile {
     max-width: 282px;
     justify-content: space-around;
+    flex-direction: column;
   }
 }
