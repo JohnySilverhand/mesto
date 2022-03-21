@@ -24,16 +24,16 @@ editButton.addEventListener('click', openForm, );
 function closeForm (){
     popupElement.classList.remove('popup_opened');
 }
+
 closeButton.addEventListener('click', closeForm);
+
 
 
 function formSubmitHandler(evt) {
    evt.preventDefault();
-   inputName.value;
-   inputAbout.value;
    profileHeader.textContent = inputName.value;
    profileText.textContent = inputAbout.value;
+   closeForm();
 }
-
 formElement.addEventListener('submit', formSubmitHandler); 
 
