@@ -6,15 +6,15 @@ let profileHeaderText = profileHeader.textContent;
 let profileText = document.querySelector('.profile__text');
 let profileTextAbout = profileText.textContent;
 let formElement = document.querySelector('.popup__form');
-let inputName = formElement.querySelector('.popup__form-name');
-let inputAbout = formElement.querySelector('.popup__form-about');
+let inputName = formElement.querySelector('.popup__input_type_name');
+let inputAbout = formElement.querySelector('.popup__input_type_about');
 let SubmitButton = formElement.querySelector('.popup__form-submit');
 
 
 function openForm (){
     popupElement.classList.add('popup_opened');
-    inputName = document.querySelector('.popup__form-name');
-    inputAbout = document.querySelector('.popup__form-about');
+    inputName = document.querySelector('.popup__input_type_name');
+    inputAbout = document.querySelector('.popup__input_type_about');
     inputName.value = profileHeader.textContent;
     inputAbout.value = profileText.textContent;
 }
