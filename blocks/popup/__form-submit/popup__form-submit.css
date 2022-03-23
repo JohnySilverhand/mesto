@@ -7,8 +7,19 @@
   margin-top: 40px;
   transition: opacity .5s linear;
   border-radius: 2px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
 }
 
 .popup__form-submit:hover {
   opacity: .6;
+}
+
+@media (min-width: 320px) and (max-width: 1023px){
+  .popup__form-submit {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
