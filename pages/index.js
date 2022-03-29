@@ -78,4 +78,18 @@ const cardsContainer = document.querySelector('.element');
 
  cardsContainer.insertAdjacentHTML('afterbegin', addCards.join(''));
 
+
+ const popupAddCard = document.querySelector('.popup_add');
+ const addButton = document.querySelector('.profile__add-button');
+ const closeButtonAddForm = document.querySelector('.popup__close-button_add');
  
+ function openAddForm (){
+   popupAddCard.classList.add('popup_opened');
+ }
+ addButton.addEventListener('click', openAddForm);
+
+ function closeAddForm (){
+   popupAddCard.classList.remove('popup_opened');
+ }
+
+ closeButtonAddForm.addEventListener('click', closeAddForm);
