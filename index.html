@@ -26,48 +26,6 @@
 
       <section class="elements">
         <ul class="element">
-          <li class="element__container">
-            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="картинка карточки">
-            <div class="element__flex-row">
-              <h2 class="element__text">Карачаевск</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__container">
-            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="картинка карточки">
-            <div class="element__flex-row">
-              <h2 class="element__text">Гора Эльбрус</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__container">
-            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="картинка карточки">
-            <div class="element__flex-row">
-              <h2 class="element__text">Домбай</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__container">
-            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="картинка карточки">
-            <div class="element__flex-row">
-              <h2 class="element__text">Гора Эльбрус</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__container">
-            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="картинка карточки">
-            <div class="element__flex-row">
-              <h2 class="element__text">Домбай</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
-          <li class="element__container">
-            <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="картинка карточки">
-            <div class="element__flex-row">
-              <h2 class="element__text">Карачаево-Черкессия</h2>
-              <button class="element__like" type="button"></button>
-            </div>
-          </li>
         </ul>
       </section>
 
@@ -93,14 +51,24 @@
         <h3 class="popup__header">Новое место</h3>
         <button class="popup__close-button popup__close-button_add" type="button"></button>
         <form class="popup__form" name="profile-edit">
-            <input type="text" class="popup__input popup__input_type_name" placeholder="Имя" name="title">
-            <input type="text" class="popup__input popup__input_type_about" placeholder="Расскажите о себе" name="about">
-            <button class="popup__form-submit" type="submit">Сохранить</button>
+            <input type="text" class="popup__input popup__input_type_name popup__input_type_header" placeholder="Название" name="title">
+            <input type="text" class="popup__input popup__input_type_about popup__input_type_src" placeholder="Ссылка на картинку" name="about">
+            <button class="popup__form-submit popup__form-submit_profile" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
-
   </div>
+
+  <template id="new-card">
+    <li class="element__container">
+      <img class="element__image"  alt="картинка карточки" >
+      <div class="element__flex-row">
+        <h2 class="element__text"></h2>
+        <button class="element__like" type="button"></button>
+      </div>
+      </li>
+  </template>
+
 <script src="./pages/index.js"></script>
 </body>
 </html>

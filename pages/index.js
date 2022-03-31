@@ -20,7 +20,6 @@ editButton.addEventListener('click', openForm);
 function closeForm (){
     popupElement.classList.remove('popup_opened');
 }
-
 closeButton.addEventListener('click', closeForm);
 
 
@@ -47,49 +46,66 @@ const initialCards = [
       link: 'https://images.unsplash.com/photo-1646729314120-be42ebffa28d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80.jpg'
     },
     {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+      name: 'Запретный город',
+      link: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
     },
     {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+      name: 'Весна',
+      link: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1228&q=80.jpg'
     },
     {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+      name: 'Бунарроти',
+      link: 'https://images.unsplash.com/photo-1576016770956-debb63d92058?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80.jpg'
     }
   ]; 
 
 
-const cardsContainer = document.querySelector('.element');
- const makeCards = (makeElement) => {  
-  return `<li class= "element__container">
-     <img class="element__image" src=${makeElement.link}>
-     <div class="element__flex-row">
-       <h2 class="element__text">${makeElement.name}</h2>
-       <button class="element__like" type="button"></button>
-     </div>
-   </li>`
- }
 
- const addCards = initialCards.map(makeElement => {
-   return makeCards(makeElement);
- });
+initialCards.forEach((item)=> {
+  const elementsTemplate = document.querySelector('#new-card').content.cloneNode(true);;
+  const elementsTemplateContainer = elementsTemplate;
+  const elementsContainer = document.querySelector('.element');
+  const elementContainer = elementsTemplate.querySelector('.element__container');
+  elementContainer.querySelector('.element__text').textContent = item.name;
+  elementContainer.querySelector('.element__image').src = item.link;
+  elementsContainer.prepend(elementsTemplateContainer);
+});
 
- cardsContainer.insertAdjacentHTML('afterbegin', addCards.join(''));
+const popupAddFormName = document.querySelector('.popup__input_type_header');
+const popupAddFormImageLink = document.querySelector('.popup__input_type_src');
+const addNewCard = function(){
+  const elementsTemplate = document.querySelector('#new-card').content.cloneNode(true);;
+  const elementsTemplateContainer = elementsTemplate;
+  const elementsContainer = document.querySelector('.element');
+  const elementContainer = elementsTemplate.querySelector('.element__container');
+  elementContainer.querySelector('.element__text').textContent = popupAddFormName.value;
+  elementContainer.querySelector('.element__image').src = popupAddFormImageLink.value;
+  elementsContainer.prepend(elementsTemplateContainer);
+}
 
 
- const popupAddCard = document.querySelector('.popup_add');
- const addButton = document.querySelector('.profile__add-button');
- const closeButtonAddForm = document.querySelector('.popup__close-button_add');
+const popupAddCardForm = document.querySelector('.popup_add');
+const addButton = document.querySelector('.profile__add-button');
+const closeButtonAddForm = document.querySelector('.popup__close-button_add');
  
- function openAddForm (){
-   popupAddCard.classList.add('popup_opened');
+function openAddForm (){
+   popupAddCardForm.classList.add('popup_opened');
  }
- addButton.addEventListener('click', openAddForm);
+addButton.addEventListener('click', openAddForm);
 
- function closeAddForm (){
-   popupAddCard.classList.remove('popup_opened');
+function closeAddForm (){
+   popupAddCardForm.classList.remove('popup_opened');
  }
+closeButtonAddForm.addEventListener('click', closeAddForm);
 
- closeButtonAddForm.addEventListener('click', closeAddForm);
+const submitProfileButton = document.querySelector('.popup__form-submit_profile');
+function formSubmitHandlerProfile (event) {
+  event.preventDefault();
+  closeAddForm();
+  addNewCard();
+ }
+popupAddCardForm.addEventListener('submit', formSubmitHandlerProfile);
+
+
+
+
