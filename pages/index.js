@@ -69,6 +69,12 @@ initialCards.forEach((item)=> {
   elementContainer.querySelector('.element__text').textContent = item.name;
   elementContainer.querySelector('.element__image').src = item.link;
   elementsContainer.prepend(elementsTemplateContainer);
+
+  elementContainer.querySelector('.element__like').addEventListener('click', function(event){
+    event.target.classList.toggle('element__like_active')
+  });
+
+  
 });
 
 const popupAddFormName = document.querySelector('.popup__input_type_header');
@@ -105,6 +111,8 @@ function formSubmitHandlerProfile (event) {
   addNewCard();
  }
 popupAddCardForm.addEventListener('submit', formSubmitHandlerProfile);
+
+
 
 
 
