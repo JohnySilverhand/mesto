@@ -73,6 +73,10 @@ initialCards.forEach((item)=> {
   elementContainer.querySelector('.element__like').addEventListener('click', function(event){
     event.target.classList.toggle('element__like_active')
   });
+
+  elementContainer.querySelector('.element__delete-card').addEventListener('click', function(){
+    elementContainer.remove();
+  })
 });
 
 const popupAddFormName = document.querySelector('.popup__input_type_header');
@@ -85,6 +89,14 @@ const addNewCard = function(){
   elementContainer.querySelector('.element__text').textContent = popupAddFormName.value;
   elementContainer.querySelector('.element__image').src = popupAddFormImageLink.value;
   elementsContainer.prepend(elementsTemplateContainer);
+
+  elementContainer.querySelector('.element__like').addEventListener('click', function(event){
+    event.target.classList.toggle('element__like_active')
+  });
+  
+  elementContainer.querySelector('.element__delete-card').addEventListener('click', function(){
+    elementContainer.remove();
+  })
 }
 
 
