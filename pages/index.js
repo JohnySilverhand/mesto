@@ -73,8 +73,6 @@ initialCards.forEach((item)=> {
   elementContainer.querySelector('.element__like').addEventListener('click', function(event){
     event.target.classList.toggle('element__like_active')
   });
-
-  
 });
 
 const popupAddFormName = document.querySelector('.popup__input_type_header');
