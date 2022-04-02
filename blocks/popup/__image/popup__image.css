@@ -3,3 +3,9 @@
   max-width: 100%;
   object-fit: cover;
 }
+
+@media (min-width: 320px) and (max-width: 1023px){
+  .popup__image {
+    height: 299px;
+  }
+}
