@@ -2,34 +2,51 @@ const popup = document.querySelector('.popup');
 const profilePopup = document.querySelector('.popup_edit');
 const elementsPopup = document.querySelector('.popup_add');
 const imagePopup = document.querySelector('.popup_open-image');
-const buttonEdit = document.querySelector('.profile__edit');
-const buttonClose = document.querySelector('.popup__close-button');
+const buttonProfileEdit = document.querySelector('.profile__edit');
+const buttonCloseEdit = document.querySelector('.popup__close-button_edit');
 const profileHeader = document.querySelector('.profile__header');
+const buttonAddProfile = document.querySelector('.profile__add-button');
 const profileText = document.querySelector('.profile__text');
 const formElement = document.querySelector('.popup__form');
 const inputName = formElement.querySelector('.popup__input_type_name');
 const inputAbout = formElement.querySelector('.popup__input_type_about');
-const submitProfileButton = document.querySelector('.popup__form-submit_profile');
+const buttonProfileSubmit = document.querySelector('.popup__form-submit_profile');
+const buttonElementsSubmit = elementsPopup.querySelector('.popup__form-submit_add');
+const buttonCloseImage = imagePopup.querySelector('.popup__close-button_image');
+const buttonCloseAdd = elementsPopup.querySelector('.popup__close-button_add');
+ 
 
+function openPopup (popup){
+  popup.classList.add('popup_opened');
+}
+buttonAddProfile.addEventListener('click', ()=> {
+  openPopup(elementsPopup);
+});
 
 function openProfilePopup(){
-  openPopup();
+  openPopup(profilePopup);
   inputName.value = profileHeader.textContent;
   inputAbout.value = profileText.textContent;
 }
-buttonEdit.addEventListener('click', openProfilePopup);
-
-
-function openPopup (){
-  popup.classList.add('popup_opened');
-}
+buttonProfileEdit.addEventListener('click', ()=> {
+  openProfilePopup(openPopup(profilePopup));
+});
 
 
 
-function closeForm (){
+function closeForm (popup){
   popup.classList.remove('popup_opened');
 }
-buttonClose.addEventListener('click', closeForm);
+buttonCloseEdit.addEventListener('click', ()=> {
+  closeForm(profilePopup);
+});
+buttonCloseImage.addEventListener('click', ()=> {
+  closeForm(imagePopup);
+});
+buttonCloseAdd.addEventListener('click', ()=> {
+  closeForm(elementsPopup);
+});
+
 
 
 
@@ -37,7 +54,7 @@ function formSubmitHandler(evt) {
    evt.preventDefault();
    profileHeader.textContent = inputName.value;
    profileText.textContent = inputAbout.value;
-   closeForm();
+   closeForm(profilePopup);
 }
 formElement.addEventListener('submit', formSubmitHandler); 
 
@@ -100,11 +117,12 @@ const card = function(createCard) {
   const imagePopup = document.querySelector('.popup_open-image');
   const imagePopupCloseButton = document.querySelector('.popup__close-button_image');
   const imagePopupText = document.querySelector('.popup__image-text');
-  containerImage.addEventListener('click', function() {
+  containerImage.addEventListener('click', function openImagePopup() {
     imagePopup.classList.add('popup_opened');
     imageOpen.src = createCard.link;
     imagePopupText.textContent = createCard.name;
     imageOpen.alt = imagePopupText.textContent;
+    openPopup(imagePopup);
   });
   imagePopupCloseButton.addEventListener('click', () => {
     imagePopup.classList.remove('popup_opened');
@@ -125,7 +143,7 @@ const addElements = (event) => {
     renderElements(initialCards);
     popupAddFormName.value ='';
     popupAddFormImageLink.value ='';
-    popupClose();
+    closeForm(elementsPopup);
 }
 
 const elements = initialCards.map(createCard => {
@@ -134,30 +152,10 @@ const elements = initialCards.map(createCard => {
 
 elementsContainer.append(elements);
 
-submitProfileButton.addEventListener('click', addElements);
+buttonElementsSubmit.addEventListener('click', addElements);
 
 
 
-
-const popupAddCardForm = document.querySelector('.popup_add');
-const addButton = document.querySelector('.profile__add-button');
-const closeButtonAddForm = document.querySelector('.popup__close-button_add');
- 
-function openAddForm (){
-  elementsPopup.classList.add('popup_opened');
- }
-addButton.addEventListener('click', openAddForm);
-
-function closeAddForm (){
-  elementsPopup.classList.remove('popup_opened');
- }
-closeButtonAddForm.addEventListener('click', closeAddForm);
-
-
-function formSubmitHandlerProfile (event) {
-  event.preventDefault();
- }
- elementsPopup.addEventListener('submit', formSubmitHandlerProfile);
 
 
 
