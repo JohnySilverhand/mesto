@@ -1,7 +1,6 @@
 .popup__image {
   height: 540px;
   width: 100%;
-  object-fit: contain;
   cursor: pointer;
 }
 
