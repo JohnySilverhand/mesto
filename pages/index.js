@@ -30,8 +30,16 @@ profilePopup.addEventListener('click', closePopupWhenOverlayClick);
 elementsPopup.addEventListener('click', closePopupWhenOverlayClick);
 imagePopup.addEventListener('click', closePopupWhenOverlayClick);
 
+function closePopupWithKey(evt) {
+  if(evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+};
+
 function openPopup (popup){
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupWithKey);
 }
 buttonAddProfile.addEventListener('click', ()=> {
   openPopup(elementsPopup);
@@ -50,6 +58,7 @@ buttonProfileEdit.addEventListener('click', ()=> {
 
 function closePopup (popup){
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupWithKey);
 }
 buttonCloseEdit.addEventListener('click', ()=> {
   closePopup(profilePopup);
