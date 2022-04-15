@@ -20,6 +20,15 @@ const imageOpen = document.querySelector('.popup__image');
 const imagePopupText = document.querySelector('.popup__image-text');
 const elementsTemplate = document.querySelector('#new-card').content;
 
+function closePopupWhenOverlayClick(evt) {
+  if(evt.target.classList.contains('popup_opened')){
+    closePopup(evt.target);
+  }
+};
+
+profilePopup.addEventListener('click', closePopupWhenOverlayClick);
+elementsPopup.addEventListener('click', closePopupWhenOverlayClick);
+imagePopup.addEventListener('click', closePopupWhenOverlayClick);
 
 function openPopup (popup){
   popup.classList.add('popup_opened');
