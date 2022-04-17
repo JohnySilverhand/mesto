@@ -24,8 +24,8 @@
           <button class="profile__add-button" type="button"></button>
       </section>
 
-      <section class="elements">
-        <ul class="element">
+      <section class="elements-card">
+        <ul class="elements">
         </ul>
       </section>
 
@@ -39,9 +39,23 @@
         <h3 class="popup__header">Редактировать профиль</h3>
         <button class="popup__close-button popup__close-button_edit" type="button"></button>
         <form class="popup__form" name="edit" novalidate>
-            <input id="name-input" type="text" class="popup__input popup__input_type_name" minlength="2" maxlength="30" placeholder="Имя" name="title" required>
+            <input 
+              id="name-input" 
+              type="text" 
+              class="popup__input popup__input_type_name" 
+              minlength="2" 
+              maxlength="30" 
+              placeholder="Имя" 
+              name="title" required>
             <span class="name-input-error popup__input-error" id="name-input-error"></span>
-            <input id="about-input" type="text" class="popup__input popup__input_type_about" " placeholder="Расскажите о себе" minlength="2" maxlength="200" name="about" required>
+            <input 
+              id="about-input"
+              type="text"
+              class="popup__input popup__input_type_about"
+              placeholder="Расскажите о себе"
+              minlength="2"
+              maxlength="200"
+              name="about" required>
             <span class="about-input-error popup__input-error" id="about-input-error"></span>
             <button class="popup__form-submit popup__form-submit_profile" type="submit">Сохранить</button>
         </form>
@@ -53,9 +67,21 @@
         <h3 class="popup__header">Новое место</h3>
         <button class="popup__close-button popup__close-button_add" type="button"></button>
         <form class="popup__form" name="add" novalidate>
-            <input id="title-input" type="text" class="popup__input  popup__input_type_header"  minlength="2" maxlength="30" placeholder="Название" name="title-input" required>
+            <input 
+              id="title-input" 
+              type="text" 
+              class="popup__input  popup__input_type_header"  
+              minlength="2"
+              maxlength="30"
+              placeholder="Название"
+              name="title-input" required>
             <span class="title-input-error popup__input-error" id="title-input-error"></span>
-            <input id="link-input" class="popup__input  popup__input_type_src"  type="url" placeholder="Ссылка на картинку" name="link-input" required>
+            <input 
+              id="link-input"
+              class="popup__input  popup__input_type_src"
+              type="url"
+              placeholder="Ссылка на картинку"
+              name="link-input" required>
             <span class="link-input-error popup__input-error" id="link-input-error"></span>
             <button class="popup__form-submit popup__form-submit_add" type="submit">Сохранить</button>
         </form>
@@ -73,7 +99,7 @@
   </div>
 
   <template id="new-card">
-    <li class="element__container">
+    <li class="element">
       <img class="element__image"   >
       <button class="element__delete-card" type="button"></button>
       <div class="element__flex-row">

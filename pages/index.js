@@ -15,7 +15,7 @@ const buttonCloseImage = imagePopup.querySelector('.popup__close-button_image');
 const buttonCloseAdd = elementsPopup.querySelector('.popup__close-button_add');
 const popupAddFormName = document.querySelector('.popup__input_type_header');
 const popupAddFormImageLink = document.querySelector('.popup__input_type_src');
-const elementsContainer = document.querySelector('.element');
+const elementsContainer = document.querySelector('.elements');
 const imageOpen = document.querySelector('.popup__image');
 const imagePopupText = document.querySelector('.popup__image-text');
 const elementsTemplate = document.querySelector('#new-card').content;
@@ -112,7 +112,7 @@ const initialCards = [
 
 const createCard = (card) => {
   const cardsTemplate = elementsTemplate.cloneNode(true);
-  const elementContainer = cardsTemplate.querySelector('.element__container');
+  const elementContainer = cardsTemplate.querySelector('.element');
   const containerImage = elementContainer.querySelector('.element__image');
   elementContainer.querySelector('.element__text').textContent = card.name;
   containerImage.src = card.link;
