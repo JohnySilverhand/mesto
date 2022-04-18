@@ -19,6 +19,14 @@ const elementsContainer = document.querySelector('.elements');
 const imageOpen = document.querySelector('.popup__image');
 const imagePopupText = document.querySelector('.popup__image-text');
 const elementsTemplate = document.querySelector('#new-card').content;
+const formObj = ({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__form-submit',
+  inactiveButtonClass: 'popup__form-submit_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}); 
 const initialCards = [
 	{
 	  name: 'Колизей',
@@ -117,10 +125,10 @@ const addElements = (event) => {
   event.preventDefault();
   initialCards.name = popupAddFormName.value;
   initialCards.link = popupAddFormImageLink.value;
-    renderElements(initialCards);
-    closePopup(elementsPopup);
-    popupAddFormName.value ='';
-    popupAddFormImageLink.value ='';
+  renderElements(initialCards);
+  closePopup(elementsPopup);
+  popupAddFormName.value ='';
+  popupAddFormImageLink.value ='';
 }
 
 const elements = initialCards.map(function(card){
@@ -136,6 +144,7 @@ elementsPopup.addEventListener('click', closePopupWhenOverlayClick);
 imagePopup.addEventListener('click', closePopupWhenOverlayClick);
 
 buttonAddProfile.addEventListener('click', ()=> {
+  turnOffButton(buttonElementsSubmit);
   openPopup(elementsPopup);
 });
 buttonProfileEdit.addEventListener('click', ()=> {
