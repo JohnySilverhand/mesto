@@ -1,26 +1,67 @@
-const initialCards = [
-	{
-	  name: 'Колизей',
-	  link: 'https://images.unsplash.com/photo-1647350737843-4e4f98139fc5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80.jpg'
-	},
-	{
-	  name: 'Витражи',
-	  link: 'https://images.unsplash.com/photo-1647793065821-8d8315cf20f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=708&q=80.jpg'
-	},
-	{
-	  name: 'Китайские праздники',
-	  link: 'https://images.unsplash.com/photo-1646729314120-be42ebffa28d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80.jpg'
-	},
-	{
-	  name: 'Запретный город',
-	  link: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-	},
-	{
-	  name: 'Весна',
-	  link: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1228&q=80.jpg'
-	},
-	{
-	  name: 'Бунарроти',
-	  link: 'https://images.unsplash.com/photo-1576016770956-debb63d92058?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80.jpg'
-	}
-];
+import  {openPopup} from "./index.js";
+import {imagePopup} from "./index.js";
+
+export class Cards {
+  constructor(name, link, cardSelector) {
+    this._name = name;
+    this._link = link;
+    this._cardSelector = cardSelector;
+  }
+
+  _getCardTemplate() {
+    const card = document
+    .querySelector('#new-card')
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
+
+    return card;
+  }
+
+  createCard() {
+    this._element = this._getCardTemplate();
+
+    this._image = this._element.querySelector('.element__image');
+    this._image.src = this._link;
+    this._cardName = this._element.querySelector('.element__text');
+    this._cardName.textContent = this._name;
+    this._like = this._element.querySelector('.element__like');
+    this._delete = this._element.querySelector('.element__delete-card');
+    this._setEventListeners();
+
+    return this._element;
+  }
+
+  _setEventListeners() {
+    this._like.addEventListener('click', () => {
+      this._likeCard();
+    });
+
+    this._delete.addEventListener('click', () => {
+      this._deleteCard();
+    });
+
+    this._image.addEventListener('click', () => {
+      this._openImage();
+    });
+  }
+
+  _likeCard() {
+    this._like.classList.toggle('element__like_active');
+  }
+
+  _deleteCard() {
+    this._delete.addEventListener('click', () => {
+      this._element.remove();
+    });
+  }
+
+  _openImage() {
+    this._imagePopup = document.querySelector('.popup__image');
+    this._imagePopupName = document.querySelector('.popup__image-text');
+    this._imagePopup.src = this._link;
+    this._imagePopupName.textContent = this._name;
+    this._imagePopup.alt = this._name;
+    openPopup(imagePopup);
+  }
+}
