@@ -1,15 +1,13 @@
 export class formValidator {
-  constructor (obj, form) {
-    this._formSelector = obj.formSelector;
-    this._inputSelector = obj.inputSelector;
-    this._submitButtonSelector = obj.submitButtonSelector;
-    this._inactiveButtonClass = obj.inactiveButtonClass;
-    this._inputErrorClass = obj.inputErrorClass;
-    this._errorClass = obj.errorClass;
+  constructor (object, form) {
+    this._formSelector = object.formSelector;
+    this._inputSelector = object.inputSelector;
+    this._submitButtonSelector = object.submitButtonSelector;
+    this._inactiveButtonClass = object.inactiveButtonClass;
+    this._inputErrorClass = object.inputErrorClass;
+    this._errorClass = object.errorClass;
     this._form = form;
-
-    this._submitButtonSelector = obj.submitButtonSelector;
-    this._input = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._submitButtonSelector = this._form.querySelector(this._submitButtonSelector);
   }
 
   _showError = (inputElement, errorMessage) => {
@@ -59,6 +57,7 @@ export class formValidator {
   }
 
   _setInputListeners = () => {
+    this._input = Array.from(this._form.querySelectorAll(this._inputSelector));
     this._input.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement);

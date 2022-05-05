@@ -23,6 +23,7 @@ export class Cards {
 
     this._image = this._element.querySelector('.element__image');
     this._image.src = this._link;
+    this._image.alt = this._name;
     this._cardName = this._element.querySelector('.element__text');
     this._cardName.textContent = this._name;
     this._like = this._element.querySelector('.element__like');
