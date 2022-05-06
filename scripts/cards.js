@@ -2,10 +2,9 @@ import  {openPopup} from "./index.js";
 import {imagePopup} from "./index.js";
 
 export class Cards {
-  constructor(name, link, cardSelector) {
+  constructor(name, link) {
     this._name = name;
     this._link = link;
-    this._cardSelector = cardSelector;
   }
 
   _getCardTemplate() {
@@ -28,12 +27,12 @@ export class Cards {
     this._cardName.textContent = this._name;
     this._like = this._element.querySelector('.element__like');
     this._delete = this._element.querySelector('.element__delete-card');
-    this._setEventListeners();
+    this._addEventListeners();
 
     return this._element;
   }
 
-  _setEventListeners() {
+  _addEventListeners() {
     this._like.addEventListener('click', () => {
       this._likeCard();
     });
