@@ -20,6 +20,8 @@ const popupAddFormImageLink = document.querySelector('.popup__input_type_src');
 const elementsContainer = document.querySelector('.elements');
 const editForm = document.querySelector('#edit');
 const addForm = document.querySelector('#add');
+const cardTemplate =  document.querySelector('#new-card').content;
+console.log(cardTemplate);
 const initialCards = [
 	{
 	  name: 'Колизей',
@@ -92,7 +94,7 @@ function changeProfileValue(evt) {
 }
 
 const createCard = (data) => {
-  const card = new Cards (data.name, data.link);
+  const card = new Cards (data.name, data.link, '#new-card');
   const cardsElement = card.createCard();
   return cardsElement;
 };
