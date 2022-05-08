@@ -1,5 +1,5 @@
 import {Card} from './Card.js';
-import {formValidator} from './validate.js';
+import {FormValidator} from './FormValidator.js';
 
 const profilePopup = document.querySelector('.popup_edit');
 const elementsPopup = document.querySelector('.popup_add');
@@ -126,11 +126,11 @@ elementsPopup.addEventListener('click', closePopupWhenOverlayClick);
 imagePopup.addEventListener('click', closePopupWhenOverlayClick);
 
 buttonAddProfile.addEventListener('click', () => {
-  formValidator.toggleButtonState;
+  FormValidator.toggleButtonState;
   openPopup(elementsPopup);
 });
 buttonProfileEdit.addEventListener('click', () => {
-  formValidator.toggleButtonState;
+  FormValidator.toggleButtonState;
   openProfilePopup();
 });
 
@@ -146,7 +146,7 @@ buttonCloseAdd.addEventListener('click', () => {
 
 formElement.addEventListener('submit', changeProfileValue); 
 
-const profileValidation = new formValidator(formObj, editForm);
+const profileValidation = new FormValidator(formObj, editForm);
 profileValidation.enableValidation();
-const addCardValidation = new formValidator(formObj, addForm);
+const addCardValidation = new FormValidator(formObj, addForm);
 addCardValidation.enableValidation();
