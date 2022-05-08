@@ -1,7 +1,7 @@
 import  {openPopup} from "./index.js";
 import {imagePopup} from "./index.js";
 
-export class Cards {
+export class Card {
   constructor(name, link, templateSelector) {
     this._name = name;
     this._link = link;
