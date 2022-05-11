@@ -3,23 +3,27 @@ import {FormValidator} from './FormValidator.js';
 
 const profilePopup = document.querySelector('.popup_edit');
 const elementsPopup = document.querySelector('.popup_add');
+const popups = document.querySelectorAll('.popup');
+console.log(popups);
+const popupsCloseButton = document.querySelectorAll('.popup__close-button');
+console.log(popupsCloseButton)
 export const imagePopup = document.querySelector('.popup_open-image');
 const buttonProfileEdit = document.querySelector('.profile__edit');
 const buttonCloseEdit = document.querySelector('.popup__close-button_edit');
 const profileHeader = document.querySelector('.profile__header');
 const buttonAddProfile = document.querySelector('.profile__add-button');
 const profileText = document.querySelector('.profile__text');
-const formElement = document.querySelector('.popup__form');
-const inputName = formElement.querySelector('.popup__input_type_name');
-const inputAbout = formElement.querySelector('.popup__input_type_about');
+const editForm = document.querySelector('#edit');
+const inputName = editForm.querySelector('.popup__input_type_name');
+const inputAbout = editForm.querySelector('.popup__input_type_about');
 const buttonElementsSubmit = elementsPopup.querySelector('.popup__form-submit_add');
 const buttonCloseImage = imagePopup.querySelector('.popup__close-button_image');
 const buttonCloseAdd = elementsPopup.querySelector('.popup__close-button_add');
 const popupAddFormName = document.querySelector('.popup__input_type_header');
 const popupAddFormImageLink = document.querySelector('.popup__input_type_src');
 const elementsContainer = document.querySelector('.elements');
-const editForm = document.querySelector('#edit');
 const addForm = document.querySelector('#add');
+const formValidator = {};
 const initialCards = [
 	{
 	  name: 'Колизей',
@@ -49,17 +53,22 @@ const initialCards = [
  const formObj = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__form-submit',
+  submitButton: '.popup__form-submit',
   inactiveButtonClass: 'popup__form-submit_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 }); 
 
-function closePopupWhenOverlayClick(evt) {
-  if(evt.target.classList.contains('popup_opened')){
-    closePopup(evt.target);
-  }
-}
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close-button')) {
+      closePopup(popup);
+    }
+  });
+});
 
 function closePopupWithKey(evt) {
   if(evt.key === 'Escape') {
@@ -109,8 +118,7 @@ const addElement = (event) => {
   cardData.link = popupAddFormImageLink.value;
   renderElements(cardData);
   closePopup(elementsPopup);
-  popupAddFormName.value ='';
-  popupAddFormImageLink.value ='';
+  addForm.reset();
 }
 
 const elements = initialCards.map(function(card){
@@ -121,32 +129,19 @@ elementsContainer.append(...elements);
 
 buttonElementsSubmit.addEventListener('click', addElement);
 
-profilePopup.addEventListener('click', closePopupWhenOverlayClick);
-elementsPopup.addEventListener('click', closePopupWhenOverlayClick);
-imagePopup.addEventListener('click', closePopupWhenOverlayClick);
-
 buttonAddProfile.addEventListener('click', () => {
-  FormValidator.toggleButtonState;
+  addCardValidation.resetValidation();
   openPopup(elementsPopup);
 });
 buttonProfileEdit.addEventListener('click', () => {
-  FormValidator.toggleButtonState;
+  profileValidation.resetValidation();
   openProfilePopup();
 });
 
-buttonCloseEdit.addEventListener('click', () => {
-  closePopup(profilePopup);
-});
-buttonCloseImage.addEventListener('click', () => {
-  closePopup(imagePopup);
-});
-buttonCloseAdd.addEventListener('click', () => {
-  closePopup(elementsPopup);
-});
-
-formElement.addEventListener('submit', changeProfileValue); 
+editForm.addEventListener('submit', changeProfileValue); 
 
 const profileValidation = new FormValidator(formObj, editForm);
 profileValidation.enableValidation();
 const addCardValidation = new FormValidator(formObj, addForm);
 addCardValidation.enableValidation();
+
