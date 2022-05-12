@@ -120,7 +120,7 @@ const elements = initialCards.map(function(card){
 
 elementsContainer.append(...elements);
 
-buttonElementsSubmit.addEventListener('click', addElement);
+addForm.addEventListener('submit', addElement);
 
 buttonAddProfile.addEventListener('click', () => {
   addCardValidation.resetValidation();
