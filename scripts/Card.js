@@ -1,5 +1,7 @@
-import  {openPopup} from "./index.js";
-import {imagePopup} from "./index.js";
+import  {openPopup, imagePopup} from "./index.js";
+
+const imageCardPopup = document.querySelector('.popup__image');
+const imagePopupName = document.querySelector('.popup__image-text');
 
 export class Card {
   constructor(name, link, templateSelector) {
@@ -58,9 +60,9 @@ export class Card {
   }
 
   _openImage() {
-    this._imagePopup.src = this._link;
-    this._imagePopupName.textContent = this._name;
-    this._imagePopup.alt = this._name;
+    imageCardPopup.src = this._link;
+    imagePopupName.textContent = this._name;
+    imagePopupName.alt = this._name;
     openPopup(imagePopup);
   }
 }
