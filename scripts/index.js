@@ -4,12 +4,8 @@ import {FormValidator} from './FormValidator.js';
 const profilePopup = document.querySelector('.popup_edit');
 const elementsPopup = document.querySelector('.popup_add');
 const popups = document.querySelectorAll('.popup');
-console.log(popups);
-const popupsCloseButton = document.querySelectorAll('.popup__close-button');
-console.log(popupsCloseButton)
 export const imagePopup = document.querySelector('.popup_open-image');
 const buttonProfileEdit = document.querySelector('.profile__edit');
-const buttonCloseEdit = document.querySelector('.popup__close-button_edit');
 const profileHeader = document.querySelector('.profile__header');
 const buttonAddProfile = document.querySelector('.profile__add-button');
 const profileText = document.querySelector('.profile__text');
@@ -17,13 +13,10 @@ const editForm = document.querySelector('#edit');
 const inputName = editForm.querySelector('.popup__input_type_name');
 const inputAbout = editForm.querySelector('.popup__input_type_about');
 const buttonElementsSubmit = elementsPopup.querySelector('.popup__form-submit_add');
-const buttonCloseImage = imagePopup.querySelector('.popup__close-button_image');
-const buttonCloseAdd = elementsPopup.querySelector('.popup__close-button_add');
 const popupAddFormName = document.querySelector('.popup__input_type_header');
 const popupAddFormImageLink = document.querySelector('.popup__input_type_src');
 const elementsContainer = document.querySelector('.elements');
 const addForm = document.querySelector('#add');
-const formValidator = {};
 const initialCards = [
 	{
 	  name: 'Колизей',
