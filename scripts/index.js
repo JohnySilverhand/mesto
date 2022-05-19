@@ -93,14 +93,14 @@ function changeProfileValue(evt) {
    closePopup(profilePopup);
 }
 
-const createCard = (data) => {
+const createNewCard = (data) => {
   const card = new Card (data.name, data.link, '#new-card');
   const cardsElement = card.createCard();
   return cardsElement;
 };
 
 const renderElements = (items) => {
-  const newCard = createCard(items);
+  const newCard = createNewCard(items);
   elementsContainer.prepend(newCard);
 }
 
@@ -115,7 +115,7 @@ const addElement = (event) => {
 }
 
 const elements = initialCards.map(function(card){
-  return createCard(card);
+  return createNewCard(card);
 });
 
 elementsContainer.append(...elements);
@@ -138,3 +138,11 @@ profileValidation.enableValidation();
 const addCardValidation = new FormValidator(formObj, addForm);
 addCardValidation.enableValidation();
 
+const createCard = new Section ({
+  data: initialCards,
+  renderer: (item) => {
+    const arrayCard = renderElements(item);
+    createCard.renderItems(arrayCard);
+  }
+}, '.elements');
+createCard.renderItems();
