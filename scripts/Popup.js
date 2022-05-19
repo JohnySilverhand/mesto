@@ -1,4 +1,4 @@
-class Popup {
+export class Popup {
   constructor (popupSelector) {
     this._selector = popupSelector;
   }
@@ -29,7 +29,7 @@ class Popup {
       if(evt.target.classList.contains('popup_opened')) {
         this.close();
       }
-    })
+    });
   }
 
-  }
+}
