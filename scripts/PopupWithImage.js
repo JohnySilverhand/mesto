@@ -1,4 +1,4 @@
-import {Popup} from "./Popup.js";
+import {Popup} from './Popup.js';
 
 const imageCardPopup = document.querySelector('.popup__image');
 const imagePopupName = document.querySelector('.popup__image-text');
