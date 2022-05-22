@@ -5,18 +5,17 @@ export class Popup {
 
   open() {
     this._selector.classList.add('popup_opened');
-    document.removeEventListener('keyup', this._handleEscClose);
+    document.addEventListener('keydown', this._handleEscClose);
   }
 
   close() {
     this._selector.classList.remove('popup_opened');
-    document.removeEventListener('keyup', this._handleEscClose);
+    document.removeEventListener('keydown', this._handleEscClose);
   }
 
   _handleEscClose(evt) {
     if(evt.key === 'Escape') {
-      const popupOpened = document.querySelector('.popup_opened');
-      this.close(popupOpened);
+      this.close();
     }
   }
 
@@ -28,7 +27,7 @@ export class Popup {
 
     this._selector.addEventListener('mousedown', (evt) => {
       if(evt.target.classList.contains('popup_opened')) {
-        this.close();
+        this.close(evt.target);
       }
     });
   }

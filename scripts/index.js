@@ -5,23 +5,19 @@ import { Section } from './Section.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js';
 
-
-const profilesPopup = document.querySelector('.popup_edit');
 const elementsPopup = document.querySelector('.popup_add');
-const popups = document.querySelectorAll('.popup');
-export const imagePopup = document.querySelector('.popup_open-image');
 const buttonProfileEdit = document.querySelector('.profile__edit');
 const buttonAddProfile = document.querySelector('.profile__add-button');
 const editForm = document.querySelector('#edit');
-const inputName = editForm.querySelector('.popup__input_type_name');
-const inputAbout = editForm.querySelector('.popup__input_type_about');
+const inputName = document.querySelector('.popup__input_type_name');
+const inputAbout = document.querySelector('.popup__input_type_about');
 const buttonElementsSubmit = elementsPopup.querySelector('.popup__form-submit_add');
 const popupAddFormName = document.querySelector('.popup__input_type_header');
 const popupAddFormImageLink = document.querySelector('.popup__input_type_src');
 const elementsContainer = document.querySelector('.elements');
 const userInfo = {
   name: '.profile__header',
-  about: '.profile__text',
+  about: '.profile__text'
 }
 const addForm = document.querySelector('#add');
 const initialCards = [
@@ -68,14 +64,6 @@ const popupFormAdd = new PopupWithForm ({
 }, '.popup_add');
 popupFormAdd.setEventListeners();
 
-const popupFormEdit =  new PopupWithForm ({
-  submitFormCallback: (item) => {
-    newProfilePopup.setUserInfo(item);
-    popupFormEdit.close();
-  }
-}, '.popup_edit');
-popupFormEdit.setEventListeners();
-
 const openImagePopup = new PopupWithImage ('.popup_open-image');
 openImagePopup.setEventListeners();
 
@@ -83,11 +71,20 @@ const newProfilePopup = new UserInfo (userInfo);
 
 const profilePopup = () => {
   const profileValue = newProfilePopup.getUserInfo();
-  inputName.value = profileValue.userName;
-  inputAbout.value = profileValue.userAbout;
+  inputName.value = profileValue.name;
+  inputAbout.value = profileValue.about;
   profileValidation.resetValidation();
   popupFormEdit.open();
 }
+
+const popupFormEdit =  new PopupWithForm ({
+  submitFormCallback: (userInfo) => {
+    console.log(userInfo)
+    newProfilePopup.setUserInfo(userInfo);
+    popupFormEdit.close();
+  }
+}, '.popup_edit');
+popupFormEdit.setEventListeners();
 
 
 
