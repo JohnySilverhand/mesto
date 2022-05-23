@@ -21,7 +21,7 @@ openImagePopup.setEventListeners();
 
 const newProfilePopup = new UserInfo (userInfo);
 
-const profilePopup = () => {
+const changeDataProfilePopup = () => {
   const profileValue = newProfilePopup.getUserInfo();
   inputName.value = profileValue.name;
   inputAbout.value = profileValue.about;
@@ -31,7 +31,6 @@ const profilePopup = () => {
 
 const popupFormEdit =  new PopupWithForm ({
   submitFormCallback: (userInfo) => {
-    console.log(userInfo)
     newProfilePopup.setUserInfo(userInfo);
     popupFormEdit.close();
   }
@@ -61,16 +60,16 @@ const addElement = (event) => {
   cardData.link = popupAddFormImageLink.value;
   renderElements(cardData);
   popupFormAdd.close();
-  addForm.reset();
 }
 
 buttonElementsSubmit.addEventListener('click', addElement);
 buttonAddProfile.addEventListener('click', () => {
+  addCardValidation.resetValidation();
   popupFormAdd.open();
 });
 
 buttonProfileEdit.addEventListener('click', () => {
-  profilePopup();
+  changeDataProfilePopup();
 });
 
 const profileValidation = new FormValidator(formObj, editForm);
