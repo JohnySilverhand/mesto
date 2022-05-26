@@ -4,17 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body>
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="логотип заголовка">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="логотип заголовка">
     </header>
     <main class="content">
       <section class="profile">
           <div class="profile__flex-row">
-            <img class="profile__image" src="./images/image.png" alt="картинка профиля">
+            <img class="profile__image" src="<%=require('./images/image.png')%>" alt="картинка профиля">
             <div class="profile__info">
               <h1 class="profile__header">Жак-Ив Кусто </h1>
               <p class="profile__text">Исследователь океана</p>
@@ -109,7 +108,5 @@
     </li>
   </template>
 
-
-<script type="module" src="./pages/index.js"></script>
 </body>
 </html>
