@@ -10,8 +10,8 @@ import { buttonProfileEdit, buttonAddProfile, editForm, inputName, inputAbout, b
   popupAddFormImageLink, elementsContainer, userInfo, addForm, initialCards, formObj } from '../utils/contstants.js';
 
 const popupFormAdd = new PopupWithForm ({
-  submitFormCallback: (item) => {
-    const popupNewCard = createNewCard(item);
+  submitFormCallback: (cardData) => {
+    const popupNewCard = createNewCard(cardData);
     createCard.addItem(popupNewCard);
     popupFormAdd.close();
   }
@@ -40,7 +40,6 @@ const popupFormEdit =  new PopupWithForm ({
 popupFormEdit.setEventListeners();
 
 
-
 const createNewCard = (cardData) => {
   const card = new Card ({cardData, 
   handleCardClick: (name, link) => {
@@ -50,30 +49,6 @@ const createNewCard = (cardData) => {
   return cardsElement;
 };
 
-const renderElements = (items) => {
-  const newCard = createNewCard(items);
-  elementsContainer.prepend(newCard);
-}
-
-const addElement = (event) => {
-  event.preventDefault();
-  const cardData = {};
-  cardData.name = popupAddFormName.value;
-  cardData.link = popupAddFormImageLink.value;
-  renderElements(cardData);
-  popupFormAdd.close();
-}
-
-buttonElementsSubmit.addEventListener('click', addElement);
-buttonAddProfile.addEventListener('click', () => {
-  addCardValidation.resetValidation();
-  popupFormAdd.open();
-});
-
-buttonProfileEdit.addEventListener('click', () => {
-  changeDataProfilePopup();
-});
-
 const profileValidation = new FormValidator(formObj, editForm);
 profileValidation.enableValidation();
 const addCardValidation = new FormValidator(formObj, addForm);
@@ -82,8 +57,17 @@ addCardValidation.enableValidation();
 const createCard = new Section ({
   items: initialCards,
   renderer: (item) => {
-    const arrayCard = renderElements(item);
+    const arrayCard = createNewCard(item);
     createCard.addItem(arrayCard);
   }
 }, '.elements');
 createCard.renderItems();
+
+buttonAddProfile.addEventListener('click', () => {
+  addCardValidation.resetValidation();
+  popupFormAdd.open();
+});
+
+buttonProfileEdit.addEventListener('click', () => {
+  changeDataProfilePopup();
+});

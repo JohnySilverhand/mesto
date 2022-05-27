@@ -38,21 +38,21 @@ export class FormValidator {
   });
 }
 
-  _turnOffButton = () => {
+  _disableButton = () => {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }
 
-  _turnOnButton = () => {
+  _enableButton = () => {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.disabled = false;
   }
 
   _toggleButtonState = () => {
     if (this._hasInvalidInput(this._inputs)){
-      this._turnOffButton();
+      this._disableButton();
     } else {
-      this._turnOnButton();
+      this._enableButton();
     }
   }
 

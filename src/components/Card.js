@@ -3,8 +3,6 @@ export class Card {
     this._name = cardData.name;
     this._link = cardData.link;
     this._templateSelector = templateSelector;
-    this._imagePopup = document.querySelector('.popup__image');
-    this._imagePopupName = document.querySelector('.popup__image-text');
     this._handleCardClick = handleCardClick;
   }
 

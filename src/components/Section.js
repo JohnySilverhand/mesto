@@ -1,6 +1,6 @@
 export class Section {
-  constructor ({items, renderer}, selector) {
-    this._selector = document.querySelector(selector);
+  constructor ({items, renderer}, containerSelector) {
+    this._container = document.querySelector(containerSelector);
     this._renderer = renderer;
     this._renderedItems = items; 
   }
@@ -12,6 +12,6 @@ export class Section {
   }
   
   addItem(element) {
-    this._selector.append(element);
+    this._container.prepend(element);
   }
 }
