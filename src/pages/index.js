@@ -1,6 +1,6 @@
 import './index.css';
 
-import { Api } from '../components/Api.js';
+
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
@@ -9,18 +9,17 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { buttonProfileEdit, buttonAddProfile, editForm, inputName, inputAbout, buttonElementsSubmit, popupAddFormName, 
   popupAddFormImageLink, elementsContainer, userInfo, addForm, initialCards, formObj } from '../utils/contstants.js';
+import { Api } from '../components/Api';
 
 const api = new Api({
 url: 'https://mesto.nomoreparties.co/v1/cohort-42',
 headers: {
-  authorization:'aafb1659-7a31-45c6-9b4e-1dbb8aeb5d77',
-  'Content-Type':'application/json'
+   authorization:'b50f3450-54d5-4593-a544-5015c37d1c2e',
+  'Content-Type':'application/json',
 }
 });
 
-const info = [api.getProfileInfo(), api.getCards()];
-
-Promise.all(info)
+const info = [api.getCards(), api.getProfileInfo()];
 
   const popupFormAdd = new PopupWithForm ({
   submitFormCallback: (cardData) => {

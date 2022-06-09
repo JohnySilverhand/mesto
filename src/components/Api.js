@@ -1,15 +1,14 @@
 export class Api {
-	constructor(config) {
-		this._url = config.url;
-		this._headers = config._headers;
+	constructor({url, headers}) {
+		this._url = url;
+		this._headers = headers;
 	}
 
 	handleResponse(res) {
 		if(res.ok) {
 			return res.json();
-		} else {
-			return Promise.reject(res.status);
 		}
+			return Promise.reject(res.status);
 	}
 
 	getCards() {
