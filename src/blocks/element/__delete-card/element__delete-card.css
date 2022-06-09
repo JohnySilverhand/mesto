@@ -12,6 +12,7 @@
   top: 20px;
   right: 20px;
   padding: 0;
+  visibility: hidden;
 }
 
 .element__delete-card:hover {
