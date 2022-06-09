@@ -4,28 +4,26 @@ export class Api {
 		this._headers = config._headers;
 	}
 
+	handleResponse(res) {
+		if(res.ok) {
+			return res.json();
+		} else {
+			return Promise.reject(res.status);
+		}
+	}
+
 	getCards() {
-		return fetch(`${this._url}/cards`, {
+		return fetch (`${this._url}/cards`, {
 			headers: this._headers
 		})
-		.then((res) => {
-			if(res.ok) {
-				return res.json();
-			}
-			return Promise.reject(res.status);
-		})
+		.then((res) => this.handleResponse(res));
 	}
 
 	getProfileInfo() {
 		return fetch(`${this._url}/users/me`, {
 			headers: this._headers
 		})
-		.then((res) => {
-			if(res.ok) {
-				return res.json();
-			}
-			return Promise.reject(res.status);
-		})
+		.then((res) => this.handleResponse(res));
 	}
 
 	addUserInfo(data) {
@@ -35,10 +33,7 @@ export class Api {
 			body: JSON.stringify(data)
 		})
 		.then((res) => {
-			if(res.ok) {
-				return res.json();
-			}
-			return Promise.reject(res.status);
+			this.handleResponse(res);
 		})
 	}
 
@@ -49,10 +44,7 @@ export class Api {
 			body: JSON.stringify(data)
 		})
 		.then((res) => {
-			if(res.ok) {
-				return res.json();
-			}
-			return Promise.reject(res.status);
+			this.handleResponse(res);
 		})
 	}
 
@@ -63,10 +55,7 @@ export class Api {
 			body: JSON.stringify(card)
 		})
 		.then((res) => {
-			if(res.ok) {
-				return res.json();
-			}
-			return Promise.reject(res.status);
+			this.handleResponse(res);
 		})
 	}
 
@@ -78,10 +67,7 @@ export class Api {
 			body: JSON.stringify(card)
 		})
 		.then((res) => {
-			if(res.ok) {
-				return res.json();
-			}
-			return Promise.reject(res.status);
+			this.handleResponse(res);
 		})
 	}
 
@@ -93,10 +79,7 @@ export class Api {
 			body: JSON.stringify(card)
 		})
 		.then((res) => {
-			if(res.ok) {
-				return res.json();
-			}
-			return Promise.reject(res.status);
+			this.handleResponse(res);
 		})
 	}
 
@@ -108,10 +91,7 @@ export class Api {
 			body: JSON.stringify(card)
 		})
 		.then((res) => {
-			if(res.ok) {
-				return res.json();
-			}
-			return Promise.reject(res.status);
+			this.handleResponse(res);
 		})
 	}
 }
