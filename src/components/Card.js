@@ -40,6 +40,12 @@ export class Card {
       this._like.classList.add('element__like_active');
     } 
 
+    if (this._userId === this._owner._id) {
+      this._delete.classList.add('element__delete-card_visible');
+    } else {
+      this._delete.classList.remove('element__delete-card_visible')
+    };
+
     this._addEventListeners();
 
     return this._element;

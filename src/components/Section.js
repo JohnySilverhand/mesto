@@ -4,8 +4,8 @@ export class Section {
     this._renderer = renderer; 
   }
 
-  renderItems(items) {
-    items.forEach((item) => {
+  renderItems(cardData) {
+    cardData.forEach((item) => {
       this._renderer(item);
     });
   }

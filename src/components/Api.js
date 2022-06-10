@@ -31,9 +31,9 @@ export class Api {
 			headers: this._headers,
 			body: JSON.stringify(data)
 		})
-		.then((res) => {
-			this.handleResponse(res);
-		})
+		.then((res)=>
+			this.handleResponse(res)
+		);
 	}
 
 	addUserAvatar(data) {
@@ -42,9 +42,9 @@ export class Api {
 			headers: this._headers,
 			body: JSON.stringify(data)
 		})
-		.then((res) => {
-			this.handleResponse(res);
-		})
+		.then((res) => 
+			this.handleResponse(res)
+		);
 	}
 
 	addCards(card) {
@@ -53,44 +53,44 @@ export class Api {
 			headers: this._headers,
 			body: JSON.stringify(card)
 		})
-		.then((res) => {
-			this.handleResponse(res);
-		})
+		.then((res) => 
+			this.handleResponse(res)
+		);
 	}
 
-	deleteCard(card, id) {
+	deleteCard(data, id) {
 		const cardId = id;
 		return fetch(`${this._url}/cards/${cardId}`, {
-			method: 'PATCH',
+			method: 'DELETE',
 			headers: this._headers,
-			body: JSON.stringify(card)
+			body: JSON.stringify(data)
 		})
-		.then((res) => {
-			this.handleResponse(res);
-		})
+		.then((res) => 
+			this.handleResponse(res)
+		);
 	}
 
-	likeCard(card, id) {
+	likeCard(data, id) {
 		const cardId = id;
 		return fetch(`${this._url}/cards/${cardId}/likes`, {
 			method: 'PUT',
 			headers: this._headers,
-			body: JSON.stringify(card)
+			body: JSON.stringify(data)
 		})
-		.then((res) => {
-			this.handleResponse(res);
-		})
+		.then((res) => 
+			this.handleResponse(res)
+		);
 	}
 
-	dislikeCard(card, id) {
+	dislikeCard(cardData, id) {
 		const cardId = id;
 		return fetch(`${this._url}/cards/${cardId}/likes`, {
 			method: 'DELETE',
 			headers: this._headers,
-			body: JSON.stringify(card)
+			body: JSON.stringify(cardData)
 		})
-		.then((res) => {
-			this.handleResponse(res);
-		})
+		.then((res) => 
+			this.handleResponse(res)
+		);
 	}
 }

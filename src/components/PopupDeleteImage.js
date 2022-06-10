@@ -4,12 +4,13 @@ export class PopupDeleteImage extends Popup {
 	constructor({data, submitFormCallback}, popupSeletcor) {
 		this._submitFormCallback = submitFormCallback;
 		this._data = data;
-		this._form = this._popupSelector.querySelector('.popup__form-delete');
 		super(popupSeletcor);
+
+		this._form = this._popupSelector.querySelector('.popup__form');
 	}
 
-	open(element, id) {
-		this._elememt = element;
+	open(cardElement, id) {
+		this._elememt = cardElement;
 		this._element_id = id;
 		super.open();
 	}
@@ -17,7 +18,8 @@ export class PopupDeleteImage extends Popup {
 	setEventListeners() {
 		this._form.addEventListener('submit', (evt) => {
 			evt.preventDefault();
-			this._submitFormCallback(this._data, this._elememt, this._id);
+			this._submitFormCallback(this._data, this._elememt, this._element_id);
 		})
+		super.setEventListeners();
 	}
 }

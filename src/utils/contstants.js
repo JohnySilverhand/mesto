@@ -1,6 +1,7 @@
 export const buttonProfileEdit = document.querySelector('.profile__edit');
 export const buttonAddProfile = document.querySelector('.profile__add-button');
 export const editForm = document.querySelector('#edit');
+export const avatarForm = document.querySelector('.popup_avatar');
 export const inputName = document.querySelector('.popup__input_type_name');
 export const inputAbout = document.querySelector('.popup__input_type_about');
 export const buttonElementsSubmit = document.querySelector('.popup__form-submit_add');
@@ -9,7 +10,8 @@ export const popupAddFormImageLink = document.querySelector('.popup__input_type_
 export const elementsContainer = document.querySelector('.elements');
 export const userInfo = {
   name: '.profile__header',
-  about: '.profile__text'
+  about: '.profile__text',
+  avatarSelector: '.profile__image'
 }
 export const addForm = document.querySelector('#add');
 export const initialCards = [
