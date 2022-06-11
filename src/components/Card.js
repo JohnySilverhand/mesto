@@ -59,11 +59,11 @@ export class Card {
       } else {
         this._dislikeCard(this._element, this._id, this._likeCounter);
       }
-    })
+    });
 
     this._delete.addEventListener('click', () => {
       this._deleteAddedCard(this._element, this._id);
-    })
+    });
 
     this._image.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);

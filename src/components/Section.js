@@ -4,13 +4,13 @@ export class Section {
     this._renderer = renderer; 
   }
 
-  renderItems(cardData) {
-    cardData.forEach((item) => {
+  renderItems(data) {
+    data.forEach((item) => {
       this._renderer(item);
     });
   }
   
   addItem(element) {
-    this._container.prepend(element);
+    this._container.append(element);
   }
 }

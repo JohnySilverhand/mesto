@@ -48,7 +48,11 @@ const changeDataProfilePopup = () => {
 
 const popupFormEdit =  new PopupWithForm ({
   submitFormCallback: (userInfo) => {
-    newProfilePopup.setUserInfo(userInfo);
+    api.addUserInfo(userInfo)
+      .then((data) => {
+        newProfilePopup.setUserInfo(data);
+        popupFormEdit.close();
+      })
     popupFormEdit.close();
   }
 }, '.popup_edit');
@@ -62,8 +66,8 @@ const createNewCard = function createNewCard(cardData) {
   handleCardClick: (name, link) => {
     openImagePopup.open(name, link);
   },
-  deleteAddedCard: (cardElement, id) => {
-    popupDelete.open(cardElement, id);
+  deleteAddedCard: (data, id) => {
+    popupDelete.open(data, id);
   },
   likeNewCard: (element, id) => {
     api.likeCard(element, id)
@@ -101,8 +105,7 @@ const popupDelete = new PopupDeleteImage (
           console.log(err);
         })
     }
-  }, '.popup_delete'
-)
+  }, '.popup_delete');
 popupDelete.setEventListeners();
 
 const popupFormAdd = new PopupWithForm ({
@@ -142,8 +145,8 @@ const addNewAvatarValidation = new FormValidator(formObj, avatarForm);
 addNewAvatarValidation.enableValidation();
 
 const createCard = new Section ({
-  renderer: (cardData) => {
-    createCard.addItem(createNewCard(cardData));
+  renderer: (data) => {
+    createCard.addItem(createNewCard(data));
   }
 }, '.elements');
 

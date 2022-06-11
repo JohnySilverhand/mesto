@@ -1,10 +1,11 @@
 import { Popup } from "./Popup.js"
 
 export class PopupDeleteImage extends Popup {
-	constructor({data, submitFormCallback}, popupSeletcor) {
+	constructor({data, submitFormCallback }, popupSeletcor) {
+		super(popupSeletcor);
 		this._submitFormCallback = submitFormCallback;
 		this._data = data;
-		super(popupSeletcor);
+
 
 		this._form = this._popupSelector.querySelector('.popup__form');
 	}

@@ -60,7 +60,7 @@ export class Api {
 
 	deleteCard(data, id) {
 		const cardId = id;
-		return fetch(`${this._url}/cards/${cardId}`, {
+		return fetch (`${this._url}/cards/${cardId}`, {
 			method: 'DELETE',
 			headers: this._headers,
 			body: JSON.stringify(data)
@@ -82,12 +82,12 @@ export class Api {
 		);
 	}
 
-	dislikeCard(cardData, id) {
+	dislikeCard(data, id) {
 		const cardId = id;
 		return fetch(`${this._url}/cards/${cardId}/likes`, {
 			method: 'DELETE',
 			headers: this._headers,
-			body: JSON.stringify(cardData)
+			body: JSON.stringify(data)
 		})
 		.then((res) => 
 			this.handleResponse(res)
