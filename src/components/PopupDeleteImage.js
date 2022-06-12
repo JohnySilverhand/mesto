@@ -1,13 +1,13 @@
 import { Popup } from "./Popup.js"
 
 export class PopupDeleteImage extends Popup {
-	constructor({data, submitFormCallback }, popupSeletcor) {
-		super(popupSeletcor);
+	constructor({data, submitFormCallback}, popupSelector) {
+		super(popupSelector);
 		this._submitFormCallback = submitFormCallback;
 		this._data = data;
 
 
-		this._form = this._popupSelector.querySelector('.popup__form');
+		this._form = this._popup.querySelector('.popup__form');
 	}
 
 	open(cardElement, id) {
@@ -17,8 +17,7 @@ export class PopupDeleteImage extends Popup {
 	}
 
 	setEventListeners() {
-		this._form.addEventListener('submit', (evt) => {
-			evt.preventDefault();
+		this._form.addEventListener('submit', () => {
 			this._submitFormCallback(this._data, this._elememt, this._element_id);
 		})
 		super.setEventListeners();

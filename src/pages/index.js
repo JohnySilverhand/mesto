@@ -26,15 +26,15 @@ Promise.all(infoFromServer)
   .then(([data, dataUser]) => {
   newProfilePopup.setUserInfo(dataUser);
   userId = dataUser._id;
-  createCard.renderItems(data);
+  classSection.renderItems(data);
 }).catch((err) => {
   console.log(err);
 })
 
 const newProfilePopup = new UserInfo (userInfo);
 
-const openImagePopup = new PopupWithImage ('.popup_open-image');
-openImagePopup.setEventListeners();
+const imagePopup = new PopupWithImage ('.popup_open-image');
+imagePopup.setEventListeners();
 
 const popupFormEdit =  new PopupWithForm ({
   submitFormCallback: (userInfo) => {
@@ -43,6 +43,12 @@ const popupFormEdit =  new PopupWithForm ({
       .then((data) => {
         newProfilePopup.setUserInfo(data);
         popupFormEdit.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        popupFormEdit.isLoading(false);
       })
     popupFormEdit.close();
   }
@@ -70,30 +76,35 @@ const popupFormAdd = new PopupWithForm ({
     api.addCards(card)
       .then((card) => {
         const cardFromPopup = createNewCard(card);
-        createCard.addItem(cardFromPopup);
+        classSection.addItem(cardFromPopup);
         popupFormAdd.close();
       })
       .catch((err) => {
         console.log(err);
       })
+      .finally(() => {
+        popupFormAdd.isLoading(false);
+      })
   }
 }, '.popup_add');
 popupFormAdd.setEventListeners();
 
-const addNewAvatar = new PopupWithForm ({
+const popupNewAvatar = new PopupWithForm ({
   submitFormCallback: (data) => {
-    addNewAvatar.isLoading(true);
+    popupNewAvatar.isLoading(true);
     api.addUserAvatar(data)
-    .then((data) => {
-      document.querySelector(userInfo.avatarSelector).src = data.avatar;
-      addNewAvatar.close();
+    .then((dataUser) => {
+      popupNewAvatar.close();
     })
     .catch((err) => {
       console.log(err);
     })
+    .finally(() => {
+      popupNewAvatar.isLoading(false);
+    })
   }
 }, '.popup-avatar');
-addNewAvatar.setEventListeners();
+popupNewAvatar.setEventListeners();
 
 const changeDataProfilePopup = () => {
   const profileValue = newProfilePopup.getUserInfo();
@@ -106,7 +117,7 @@ const changeDataProfilePopup = () => {
 const createNewCard = function createNewCard(cardData) {
   const card = new Card ({cardData, 
   handleCardClick: (name, link) => {
-    openImagePopup.open(name, link);
+    imagePopup.open(name, link);
   },
   deleteAddedCard: (data, id) => {
     popupDelete.open(data, id);
@@ -135,21 +146,21 @@ const createNewCard = function createNewCard(cardData) {
   return cardsElement;
 };
 
-const createCard = new Section ({
+const classSection = new Section ({
   renderer: (data) => {
-    createCard.addItem(createNewCard(data));
+    classSection.addItem(createNewCard(data));
   }
 }, '.elements');
 
 const profileValidation = new FormValidator(formObj, editForm);
 profileValidation.enableValidation();
-const addCardValidation = new FormValidator(formObj, addForm);
-addCardValidation.enableValidation();
+const popupCardValidation = new FormValidator(formObj, addForm);
+popupCardValidation.enableValidation();
 const addNewAvatarValidation = new FormValidator(formObj, avatarForm);
 addNewAvatarValidation.enableValidation();
 
 buttonAddProfile.addEventListener('click', () => {
-  addCardValidation.resetValidation();
+  popupCardValidation.resetValidation();
   popupFormAdd.open();
 });
 
@@ -159,5 +170,5 @@ buttonProfileEdit.addEventListener('click', () => {
 
 document.querySelector('.profile__image-button').addEventListener('click', () => {
   addNewAvatarValidation.resetValidation();
-  addNewAvatar.open();
+  popupNewAvatar.open();
 })

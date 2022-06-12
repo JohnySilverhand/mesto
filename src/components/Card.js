@@ -11,6 +11,7 @@ export class Card {
     this._likes = cardData.likes;
     this._id = cardData._id;
     this._owner = cardData.owner;
+    
   }
 
   _getCardTemplate() {
