@@ -12,6 +12,7 @@ import { Api } from '../components/Api';
 import { PopupDeleteImage } from '../components/PopupDeleteImage.js';
 
 let userId;
+let cardDelete;
 
 const api = new Api({
 url: 'https://mesto.nomoreparties.co/v1/cohort-42',
@@ -57,14 +58,19 @@ popupFormEdit.setEventListeners();
 
 const popupDelete = new PopupDeleteImage (
   {
-    submitFormCallback: (data, element, id) => {
-      api.deleteCard(data, id)
-        .then((data) => {
-          element.remove();
-          popupDelete.close();
+    submitFormCallback: (data) => {
+      api.deleteCard(data)
+        .then(() => {
+          cardDelete.removeCard();
+        })
+        .then(() => {
+          cardDelete = null;
         })
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+          popupDelete.close();
         })
     }
   }, '.popup-delete');
@@ -94,6 +100,7 @@ const popupNewAvatar = new PopupWithForm ({
     popupNewAvatar.isLoading(true);
     api.addUserAvatar(data)
     .then((dataUser) => {
+      newProfilePopup.setUserInfo(dataUser);
       popupNewAvatar.close();
     })
     .catch((err) => {
@@ -115,33 +122,33 @@ const changeDataProfilePopup = () => {
 }
 
 const createNewCard = function createNewCard(cardData) {
-  const card = new Card ({cardData, 
+  const card = new Card ({cardData, userId,
   handleCardClick: (name, link) => {
     imagePopup.open(name, link);
   },
-  deleteAddedCard: (data, id) => {
-    popupDelete.open(data, id);
+  deleteAddedCard: () => {
+    cardDelete = card;
+    popupDelete.open(cardDelete);
   },
-  likeNewCard: (element, id) => {
-    api.likeCard(element, id)
-    .then((cardData) => {
-      element.querySelector('.element__like').classList.add('element__like_active');
-      element.querySelector('.element__counter').textContent = cardData.likes.length; 
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  },
-  dislikeCard: (element, id) => {
-    api.dislikeCard(element, id)
-    .then((cardData) => {
-      element.querySelector('.element__like').classList.remove('element__like_active');
-      element.querySelector('.element__counter').textContent = cardData.likes.length; 
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }}, userId, '#new-card');
+  handleLikeCard: () => {
+    if (card.isLiked()) {
+      api.dislikeCard(cardData)
+      .then((data) => {
+        card.setLikes(data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    } else {
+      api.likeCard(cardData)
+      .then((data) => {
+        card.setLikes(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+  }}, '#new-card');
   const cardsElement = card.createCard();
   return cardsElement;
 };
