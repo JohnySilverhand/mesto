@@ -1,4 +1,3 @@
-"use strict";
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
  * This devtool is neither made for production nor for readable output files.
@@ -7,15 +6,23 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-self["webpackHotUpdatemesto"]("main",{},
+self["webpackHotUpdatemesto"]("main",{
+
+/***/ "./node_modules/ansi-html-community/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/ansi-html-community/index.js ***!
+  \***************************************************/
+/***/ (() => {
+
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nError: ENOENT: no such file or directory, open 'C:\\\\Users\\\\Lenin\\\\mesto\\\\node_modules\\\\ansi-html-community\\\\index.js'\");\n\n//# sourceURL=webpack://mesto/./node_modules/ansi-html-community/index.js?");
+
+/***/ })
+
+},
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ /* webpack/runtime/getFullHash */
 /******/ (() => {
-<<<<<<<< HEAD:dist/main.96027258314596943bf0.hot-update.js
-/******/ 	__webpack_require__.h = () => ("823eb973981701cff26e")
-========
-/******/ 	__webpack_require__.h = () => ("5804c52556cfbc2b1800")
->>>>>>>> 6fb84061f990d0e4166c0ea281c66036304f1027:dist/main.10c4b4396683f1f7889c.hot-update.js
+/******/ 	__webpack_require__.h = () => ("b2daca4820c8b782e653")
 /******/ })();
 /******/ 
 /******/ }

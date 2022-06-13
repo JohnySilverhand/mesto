@@ -1,143 +1,69 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mesto</title>
-<script defer src="index.js"></script><link href="main.css" rel="stylesheet"></head>
-<body>
-  <div class="page">
-    <header class="header">
-      <img class="header__logo" src="images/logo.bc3450ffaa676172ae9a.svg" alt="логотип заголовка">
-    </header>
-    <main class="content">
-      <section class="profile">
-          <div class="profile__flex-row">
-            <img class="profile__image" alt="картинка профиля">
-            <button class="profile__image-button" type="button"></button>
-            <div class="profile__info">
-              <h1 class="profile__header">Жак-Ив Кусто </h1>
-              <p class="profile__text">Исследователь океана</p>
-              <button class="profile__edit" type="button"></button>
-            </div>
-          </div>
-          <button class="profile__add-button" type="button"></button>
-      </section>
-
-      <section class="elements-card">
-        <ul class="elements">
-        </ul>
-      </section>
-
-    </main>
-    <footer class="footer">
-      <p class="footer__author"> &#169; 2020 Mesto Russia</p>
-    </footer>
-
-    <div class="popup popup_edit">
-      <div class="popup__container">
-        <h3 class="popup__header">Редактировать профиль</h3>
-        <button class="popup__close-button popup__close-button_edit" type="button"></button>
-        <form class="popup__form" id="edit" name="edit" novalidate>
-            <input 
-              id="name-input" 
-              type="text" 
-              class="popup__input popup__input_type_name" 
-              minlength="2" 
-              maxlength="30" 
-              placeholder="Имя" 
-              name="name" required>
-            <span class="name-input-error popup__input-error" id="name-input-error"></span>
-            <input 
-              id="about-input"
-              type="text"
-              class="popup__input popup__input_type_about"
-              placeholder="Расскажите о себе"
-              minlength="2"
-              maxlength="200"
-              name="about" required>
-            <span class="about-input-error popup__input-error" id="about-input-error"></span>
-            <button class="popup__form-submit popup__form-submit_profile" type="submit">Сохранить</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="popup popup_add">
-      <div class="popup__container">
-        <h3 class="popup__header">Новое место</h3>
-        <button class="popup__close-button popup__close-button_add" type="button"></button>
-        <form class="popup__form" id="add" name="add" novalidate>
-            <input 
-              id="title-input" 
-              type="text" 
-              class="popup__input  popup__input_type_header"  
-              minlength="2"
-              maxlength="30"
-              placeholder="Название"
-              name="name" required>
-            <span class="title-input-error popup__input-error" id="title-input-error"></span>
-            <input 
-              id="link-input"
-              class="popup__input  popup__input_type_src"
-              type="url"
-              placeholder="Ссылка на картинку"
-              name="link" required>
-            <span class="link-input-error popup__input-error" id="link-input-error"></span>
-            <button class="popup__form-submit popup__form-submit_add" type="submit">Создать</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="popup popup_open-image">
-      <div class="popup__image-container">
-        <img class="popup__image" alt="f">
-        <p class="popup__image-text"></p>
-        <button class="popup__close-button popup__close-button_image" type="button"></button>
-      </div>
-    </div>
-
-    <div class="popup popup-avatar">
-      <div class="popup__container popup-avatar__container">
-        <h3 class="popup__header">Обновить аватар</h3>
-        <button class="popup__close-button popup__close-button-avatar" type="button"></button>
-        <form class="popup__form" id="avatar" name="popup-avatar" novalidate>
-          <input
-            type="url"
-            id="avatar-input"
-            placeholder="Ссылка на аватар"
-            name="avatar"
-            class="popup__input popup__input_type-avatar" required>
-          <span class="avatar-input-error popup__input-error"></span>
-          <button class="popup__form-submit popup__form-submit-avatar">Сохранить</button>
-        </form>
-      </div>  
-    </div>
-
-    <div class="popup popup-delete">
-      <div class="popup__container popup-delete__container">
-        <h3 class="popup__header">Вы уверены?</h3>
-        <button class="popup__close-button popup__close-button-avatar" type="button"></button>
-        <form class="popup__form popup__form-delete" id="delete" name="delete" novalidate>
-          <button class="popup__form-submit popup__form-submit-delete">Да</button>
-        </form>
-      </div>
-    </div>
-
-  </div>
-
-  <template id="new-card">
-    <li class="element">
-      <img class="element__image">
-      <button class="element__delete-card" type="button"></button>
-      <div class="element__flex-row">
-        <h2 class="element__text" name="Card"></h2>
-        <div class="element__counter-container">
-          <button class="element__like" type="button"></button>
-          <p class="element__counter"></p>
-        </div>
-      </div>
-    </li>
-  </template>
-
-</body>
-</html>
+<head><script defer src="index.js"></script></head>Html Webpack Plugin:
+<pre>
+  Error: Child compilation failed:
+  Module not found: Error: Can't resolve 'C:\Users\Lenin\mesto\node_modules\html  -webpack-plugin\lib\loader.js' in 'C:\Users\Lenin\mesto'
+  ModuleNotFoundError: Module not found: Error: Can't resolve 'C:\Users\Lenin\me  sto\node_modules\html-webpack-plugin\lib\loader.js' in 'C:\Users\Lenin\mesto'
+      at C:\Users\Lenin\mesto\node_modules\webpack\lib\Compilation.js:2016:28
+      at C:\Users\Lenin\mesto\node_modules\webpack\lib\NormalModuleFactory.js:79  8:13
+      at eval (eval at create (C:\Users\Lenin\mesto\node_modules\tapable\lib\Hoo  kCodeFactory.js:33:10), <anonymous>:10:1)
+      at C:\Users\Lenin\mesto\node_modules\webpack\lib\NormalModuleFactory.js:27  0:22
+      at eval (eval at create (C:\Users\Lenin\mesto\node_modules\tapable\lib\Hoo  kCodeFactory.js:33:10), <anonymous>:9:1)
+      at C:\Users\Lenin\mesto\node_modules\webpack\lib\NormalModuleFactory.js:43  4:22
+      at C:\Users\Lenin\mesto\node_modules\webpack\lib\NormalModuleFactory.js:11  6:11
+      at C:\Users\Lenin\mesto\node_modules\webpack\lib\NormalModuleFactory.js:63  5:23
+      at C:\Users\Lenin\mesto\node_modules\neo-async\async.js:2830:7
+      at done (C:\Users\Lenin\mesto\node_modules\neo-async\async.js:2925:13)
+  
+  - Compilation.js:2016 
+    [mesto]/[webpack]/lib/Compilation.js:2016:28
+  
+  - NormalModuleFactory.js:798 
+    [mesto]/[webpack]/lib/NormalModuleFactory.js:798:13
+  
+  
+  - NormalModuleFactory.js:270 
+    [mesto]/[webpack]/lib/NormalModuleFactory.js:270:22
+  
+  
+  - NormalModuleFactory.js:434 
+    [mesto]/[webpack]/lib/NormalModuleFactory.js:434:22
+  
+  - NormalModuleFactory.js:116 
+    [mesto]/[webpack]/lib/NormalModuleFactory.js:116:11
+  
+  - NormalModuleFactory.js:635 
+    [mesto]/[webpack]/lib/NormalModuleFactory.js:635:23
+  
+  - async.js:2830 
+    [mesto]/[neo-async]/async.js:2830:7
+  
+  - async.js:2925 done
+    [mesto]/[neo-async]/async.js:2925:13
+  
+  - child-compiler.js:169 
+    [mesto]/[html-webpack-plugin]/lib/child-compiler.js:169:18
+  
+  - Compiler.js:551 finalCallback
+    [mesto]/[webpack]/lib/Compiler.js:551:5
+  
+  - Compiler.js:577 
+    [mesto]/[webpack]/lib/Compiler.js:577:11
+  
+  - Compiler.js:1196 
+    [mesto]/[webpack]/lib/Compiler.js:1196:17
+  
+  
+  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [mesto]/[tapable]/lib/Hook.js:18:14
+  
+  - Compiler.js:1192 
+    [mesto]/[webpack]/lib/Compiler.js:1192:33
+  
+  - Compilation.js:2787 finalCallback
+    [mesto]/[webpack]/lib/Compilation.js:2787:11
+  
+  - Compilation.js:3092 
+    [mesto]/[webpack]/lib/Compilation.js:3092:11
+  
+  
+</pre>

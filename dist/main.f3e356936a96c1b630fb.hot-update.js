@@ -11,11 +11,7 @@ self["webpackHotUpdatemesto"]("main",{},
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ /* webpack/runtime/getFullHash */
 /******/ (() => {
-<<<<<<<< HEAD:dist/main.96027258314596943bf0.hot-update.js
-/******/ 	__webpack_require__.h = () => ("823eb973981701cff26e")
-========
-/******/ 	__webpack_require__.h = () => ("5804c52556cfbc2b1800")
->>>>>>>> 6fb84061f990d0e4166c0ea281c66036304f1027:dist/main.10c4b4396683f1f7889c.hot-update.js
+/******/ 	__webpack_require__.h = () => ("e3039fe266cb9af97b48")
 /******/ })();
 /******/ 
 /******/ }
