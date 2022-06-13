@@ -5,10 +5,10 @@ export class Api {
 	}
 
 	handleResponse(res) {
-		if(res.ok) {
-			return res.json();
-		}
-			return Promise.reject(res.status);
+	if(res.ok) {
+		return res.json();
+	}
+	return Promise.reject(res.status);
 	}
 
 	getCards() {
@@ -21,7 +21,7 @@ export class Api {
 	getProfileInfo() {
 		return fetch(`${this._url}/users/me`, {
 			headers: this._headers
-		})
+	})
 		.then((res) => this.handleResponse(res));
 	}
 
@@ -30,10 +30,8 @@ export class Api {
 			method: 'PATCH',
 			headers: this._headers,
 			body: JSON.stringify(data)
-		})
-		.then((res)=>
-			this.handleResponse(res)
-		);
+	})
+		.then((res)=>	this.handleResponse(res));
 	}
 
 	addUserAvatar(data) {
@@ -42,9 +40,7 @@ export class Api {
 			headers: this._headers,
 			body: JSON.stringify(data)
 		})
-		.then((res) => 
-			this.handleResponse(res)
-		);
+		.then((res) => this.handleResponse(res));
 	}
 
 	addCards(card) {
@@ -53,9 +49,7 @@ export class Api {
 			headers: this._headers,
 			body: JSON.stringify(card)
 		})
-		.then((res) => 
-			this.handleResponse(res)
-		);
+		.then((res) => this.handleResponse(res));
 	}
 
 	deleteCard(data) {
@@ -63,9 +57,7 @@ export class Api {
 			method: 'DELETE',
 			headers: this._headers,
 		})
-		.then((res) => 
-			this.handleResponse(res)
-		);
+		.then((res) => this.handleResponse(res));
 	}
 
 	likeCard(data) {
@@ -73,18 +65,14 @@ export class Api {
 			method: 'PUT',
 			headers: this._headers,
 		})
-		.then((res) => 
-			this.handleResponse(res)
-		);
-	}
+		.then((res) => this.handleResponse(res));
+	}	
 
-	dislikeCard(data) {
+dislikeCard(data) {
 		return fetch(`${this._url}/cards/${data._id}/likes`, {
 			method: 'DELETE',
 			headers: this._headers,
 		})
-		.then((res) => 
-			this.handleResponse(res)
-		);
+		.then((res) => this.handleResponse(res));
 	}
 }
