@@ -58,36 +58,30 @@ export class Api {
 		);
 	}
 
-	deleteCard(data, id) {
-		const cardId = id;
-		return fetch (`${this._url}/cards/${cardId}`, {
+	deleteCard(data) {
+		return fetch (`${this._url}/cards/${data._id}`, {
 			method: 'DELETE',
 			headers: this._headers,
-			body: JSON.stringify(data)
 		})
 		.then((res) => 
 			this.handleResponse(res)
 		);
 	}
 
-	likeCard(data, id) {
-		const cardId = id;
-		return fetch(`${this._url}/cards/${cardId}/likes`, {
+	likeCard(data) {
+		return fetch(`${this._url}/cards/${data._id}/likes`, {
 			method: 'PUT',
 			headers: this._headers,
-			body: JSON.stringify(data)
 		})
 		.then((res) => 
 			this.handleResponse(res)
 		);
 	}
 
-	dislikeCard(data, id) {
-		const cardId = id;
-		return fetch(`${this._url}/cards/${cardId}/likes`, {
+	dislikeCard(data) {
+		return fetch(`${this._url}/cards/${data._id}/likes`, {
 			method: 'DELETE',
 			headers: this._headers,
-			body: JSON.stringify(data)
 		})
 		.then((res) => 
 			this.handleResponse(res)
